@@ -11,20 +11,5 @@ export class AppComponent implements OnInit {
   user: any = {};
 
   constructor(private router: Router) {}
-  ngOnInit() {
-    // if (window.location.href.indexOf("login") === -1) {
-    //   this.user = localStorage.getItem("user");
-    //   this.handleNavigation(this.user);
-    // }
-  }
-
-  handleNavigation(user) {
-    if (user) {
-      // route  to protfolio
-      this.router.navigateByUrl("/portfolio");
-    } else {
-      // rout to login
-      this.router.navigateByUrl("/login");
-    }
-  }
+  ngOnInit() {}
 }
