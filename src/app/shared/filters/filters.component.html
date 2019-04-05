@@ -1,0 +1,45 @@
+<div *ngIf="params" class="filter-container">
+  <div
+    class="portfolio-type-search filter"
+    *ngIf="params.portfolio_type"
+    [hidden]="!params.portfolio_type.is_visible"
+  >
+    <mat-label>Portfolio type</mat-label>
+    <mat-select
+      class="form-control"
+      [(ngModel)]="selectedValue"
+      name="{{ params.portfolio_type.name }}"
+      id="{{ params.portfolio_type.name }}"
+    >
+      <mat-option
+        [disabled]="params.portfolio_type.is_disabled"
+        *ngFor="let option of params.portfolio_type.data"
+        [value]="option.key"
+        (onSelectionChange)="selectChange($event)"
+      >
+        {{ option.label }}
+      </mat-option>
+    </mat-select>
+    <!-- <input
+    class="form-control"
+    matInput
+    placeholder="Search by portfolio type"
+    value=""
+  />
+  <button mat-button class="portfolio-type-search-btn">
+    <mat-icon>search</mat-icon>
+  </button> -->
+  </div>
+</div>
+
+<!-- "portfolio_type": { "data": [ 
+  { "key": null, "label": "All Types" }, 
+  { "key": "live", "label": "Live" },
+   { "key": "proposal", "label": "Proposal" } 
+   ], 
+   "is_disabled": false, 
+   "is_valid": true, 
+   "is_visible": true, 
+   "name": "portfolio_type" 
+  } 
+} -->

@@ -1,0 +1,119 @@
+<table mat-table [dataSource]="displayTableData" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  <!-- --Internal-- Column -->
+  <ng-container matColumnDef="portfolio_attribute_portfolio_id">
+    <th mat-header-cell *matHeaderCellDef>id</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["portfolio_attribute_portfolio_id"].value }}
+    </td>
+  </ng-container>
+  <!-- Portfolio Type Column -->
+  <ng-container matColumnDef="portfolio_attribute_type">
+    <th mat-header-cell *matHeaderCellDef>Portfolio Type</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["portfolio_attribute_type"].value }}
+    </td>
+  </ng-container>
+
+  <!-- Portfolio Name Column -->
+  <ng-container matColumnDef="portfolio_attribute_name">
+    <th mat-header-cell *matHeaderCellDef>Portfolio Name</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["portfolio_attribute_name"].value }}
+    </td>
+  </ng-container>
+
+  <!-- Currency Column -->
+  <ng-container matColumnDef="portfolio_attribute_currency">
+    <th mat-header-cell *matHeaderCellDef>Currency</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["portfolio_attribute_currency"].value }}
+    </td>
+  </ng-container>
+
+  <!-- Current Capital Column -->
+  <ng-container matColumnDef="portfolio_attribute_current_capital">
+    <th mat-header-cell *matHeaderCellDef>Current Capital</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_current_capital"].value
+          | number
+            : tableAttribute["portfolio_attribute_current_capital"].format
+                .digits_info
+      }}
+    </td>
+  </ng-container>
+
+  <!-- bond Type Column -->
+  <ng-container matColumnDef="portfolio_attribute_asset_count">
+    <th mat-header-cell *matHeaderCellDef># Bonds</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_asset_count"].value
+          | number
+            : tableAttribute["portfolio_attribute_asset_count"].format
+                .digit_info
+      }}
+    </td>
+  </ng-container>
+
+  <!-- Avg. Yield Column -->
+  <ng-container matColumnDef="portfolio_attribute_avg_yield">
+    <th mat-header-cell *matHeaderCellDef>Avg. Yield</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_avg_yield"].value
+          | number
+            : tableAttribute["portfolio_attribute_avg_yield"].format.digit_info
+      }}
+    </td>
+  </ng-container>
+
+  <!-- Avg. Duration Column -->
+  <ng-container matColumnDef="portfolio_attribute_duration">
+    <th mat-header-cell *matHeaderCellDef>Avg. Duration</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_duration"].value
+          | number
+            : tableAttribute["portfolio_attribute_duration"].format.digits_info
+      }}
+    </td>
+  </ng-container>
+
+  <!-- Avg. Rating Column -->
+  <ng-container matColumnDef="portfolio_attribute_avg_rating">
+    <th mat-header-cell *matHeaderCellDef>Avg. Rating</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element["portfolio_attribute_avg_rating"].value }}
+    </td>
+  </ng-container>
+  <!-- Date Created Column -->
+  <ng-container matColumnDef="portfolio_attribute_creation_date">
+    <th mat-header-cell *matHeaderCellDef>Date Created</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_creation_date"].value
+          | date
+            : tableAttribute["portfolio_attribute_creation_date"].format
+                .date_format
+      }}
+    </td>
+  </ng-container>
+  <!-- Last Updated Column -->
+  <ng-container matColumnDef="portfolio_attribute_last_modified">
+    <th mat-header-cell *matHeaderCellDef>Last Updated</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element["portfolio_attribute_last_modified"].value
+          | date
+            : tableAttribute["portfolio_attribute_last_modified"].format
+                .date_format
+      }}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

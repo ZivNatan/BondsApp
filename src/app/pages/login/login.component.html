@@ -1,0 +1,85 @@
+<div class="login-main">
+  <div class="content">
+    <div class="info-box">
+      <div>
+        <h1>Algo-advistoy for Fixed Income</h1>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type
+        </p>
+      </div>
+    </div>
+    <div class="form-box">
+      <form
+        class="login-form"
+        (ngSubmit)="onSubmit(loginForm)"
+        #loginForm="ngForm"
+      >
+        <div class="form-title form-row">
+          <h2>BondIt</h2>
+        </div>
+        <div class="form-row form-group">
+          <input
+            type="text"
+            class="login-input  form-control"
+            name="organizationId"
+            required
+            #organizationId="ngModel"
+            [(ngModel)]="user.organizationId"
+            placeholder="Organization ID"
+          />
+          <div
+            [hidden]="organizationId.valid || !loginForm.submitted"
+            class="alert alert-danger"
+          >
+            OrganizationId is required
+          </div>
+        </div>
+
+        <div class="form-row form-group">
+          <input
+            type="text"
+            class="login-input form-control"
+            name="username"
+            required
+            minlength="3"
+            #username="ngModel"
+            [(ngModel)]="user.username"
+            placeholder="Username"
+          />
+          <div
+            [hidden]="username.valid || !loginForm.submitted"
+            class="alert alert-danger"
+          >
+            Username is required, minlength 3 characters
+          </div>
+        </div>
+
+        <div class="form-row form-group">
+          <input
+            type="password"
+            class="login-input form-control"
+            name="tempPassword"
+            required
+            #tempPassword="ngModel"
+            [(ngModel)]="user.tempPassword"
+            placeholder="Temporary Password"
+          />
+          <div
+            [hidden]="tempPassword.valid || !loginForm.submitted"
+            class="alert alert-danger"
+          >
+            Password is required
+          </div>
+        </div>
+
+        <div class="form-row">
+          <button type="submit" class="btn btn-primary login-button  btn-lg">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,98 @@
+<div class="portfolio-main">
+  <header class="header">
+    <div class="logo-wrapper"><span>BondIt</span></div>
+    <div class="action-wrapper">
+      <div
+        class="action"
+        [ngClass]="{ 'active-action': actionSelected.myPortfolio }"
+        (click)="activeSelected('myPortfolio')"
+      >
+        <div class="action-img"><i class="fas fa-briefcase"></i></div>
+        <div class="action-text">My Portfolio</div>
+      </div>
+      <div
+        class="action "
+        [ngClass]="{ 'active-action': actionSelected.createPortfolio }"
+        (click)="activeSelected('createPortfolio')"
+      >
+        <div class="action-img"><i class="fas fa-folder-plus"></i></div>
+        <div class="action-text">Create Portfolio</div>
+      </div>
+      <div
+        class="action "
+        [ngClass]="{ 'active-action': actionSelected.comparesPortfolios }"
+        (click)="activeSelected('comparesPortfolios')"
+      >
+        <div class="action-img"><i class="fas fa-balance-scale"></i></div>
+        <div class="action-text">Compares Portfolios</div>
+      </div>
+      <div
+        class="action "
+        [ngClass]="{ 'active-action': actionSelected.search }"
+        (click)="activeSelected('search')"
+      >
+        <div class="action-img"><i class="fas fa-search"></i></div>
+        <div class="action-text">Search Bonds</div>
+      </div>
+      <div
+        class="action "
+        [ngClass]="{ 'active-action': actionSelected.alerts }"
+        (click)="activeSelected('alerts')"
+      >
+        <div class="action-img"><i class="fas fa-bell"></i></div>
+        <div class="action-text">Alerts</div>
+      </div>
+    </div>
+    <div class="tool-wrapper">
+      <!-- Example single danger button -->
+      <div class="dropdown">
+        <button
+          class="btn btn-light dropdown-toggle user-btn"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          My Name
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" routerLink="/login">Go to login</a>
+        </div>
+      </div>
+      <!-- Example single danger button -->
+      <div class="setting-wrapper"><i class="fas fa-cog"></i></div>
+    </div>
+  </header>
+  <div class="content">
+    <h3>My Portfolios</h3>
+    <div
+      class="filter-container"
+      *ngIf="showComponents && showComponents.table_filters"
+    >
+      <app-filters
+        [params]="filterParams"
+        (changeFilters)="getFilterChanges($event)"
+      ></app-filters>
+    </div>
+    <div
+      class="table-container"
+      *ngIf="showComponents && showComponents.table_portfolio_attributes"
+    >
+      <app-table
+        [tableData]="tableData"
+        [tableColumns]="tableColumns"
+        [tableAttribute]="tableAttribute"
+      ></app-table>
+      <mat-paginator
+        [length]="length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="pageEvent = handleTablePage($event)"
+      >
+      </mat-paginator>
+    </div>
+  </div>
+</div>
